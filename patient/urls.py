@@ -1,9 +1,9 @@
+from .views import PatientViewset
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import ServiceViewset
 
 router = DefaultRouter()
-router.register('service', ServiceViewset)
+router.register('list', PatientViewset)
 urlpatterns = [
     path('', include(router.urls)),
 ]
