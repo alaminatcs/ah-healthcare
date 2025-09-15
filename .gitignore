@@ -1,0 +1,43 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+env/
+uenv/
+.venv/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.sqlite3
+*/images/
+media/
+staticfiles/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pip installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Coverage/Testing
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+htmlcov/
