@@ -10,6 +10,7 @@ venv/
 env/
 uenv/
 .venv/
+*.env
 
 # Django stuff
 *.log
