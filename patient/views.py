@@ -1,10 +1,10 @@
 from . import models
 from . import serializers
-from rest_framework import viewsets
 from django.shortcuts import redirect
 from rest_framework.views import APIView
-from rest_framework.response import Response
 from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework import viewsets, pagination
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
@@ -12,13 +12,23 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+# patient pagination
+class PatientPagination(pagination.PageNumberPagination):
+    page_size = 1
+    page_size_query_param = page_size
+    max_page_size = 50
 
 # base patient view
 class PatientViewset(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    pagination_class = PatientPagination
     queryset = models.Patient.objects.all()
     serializer_class = serializers.PatientSerializer
-    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 # user account creation view
 class UserRegistrationApiView(APIView):

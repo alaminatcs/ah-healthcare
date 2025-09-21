@@ -97,8 +97,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKEND': ['django_filter.rest_framework.DjangoFilterBackend'],
 
     # This enforces authentication on all API endpoints by default, 
-    # Only authenticated users (with valid token/session) can access the API.
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+    # 'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
 }
 
 
