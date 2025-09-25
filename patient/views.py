@@ -94,6 +94,6 @@ class UserLoginApiView(APIView):
 # user logout class view
 class UserLogoutApiView(APIView):
     def get(self, request):
-        request.user.auth_token.delete()
+        # request.user.auth_token.delete()
         logout(request)
         return redirect('login')
